@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: UsabilityImprover
+Bundle-SymbolicName: UsabilityImprover
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: usabilityimprover.Activator
+Export-Package: usabilityimprover
+Require-Bundle: UsabilityImprover.service
+Import-Package: org.osgi.framework;version="1.3.0"
