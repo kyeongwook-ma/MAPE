@@ -26,8 +26,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
-import selab.dev.adaptization.Effector.service.Effector;
-import selab.dev.adaptization.Effector.service.IEffector;
+import selab.dev.adaptization.Effector.service.ConfManager;
+import selab.dev.adaptization.Effector.service.IConfManager;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -119,7 +119,7 @@ public class AdaptationBundleActivator {
 	private Resources m_res = null;
 	
 	//dependence Effector
-	private Effector m_effector = null;
+	private ConfManager m_effector = null;
 	
 	public AdaptationBundleActivator(Context context, String absolutePath, Resources res) 
 	{
@@ -195,12 +195,12 @@ public class AdaptationBundleActivator {
    //dependence Effector
     private void RegistedEffector() 
     {
-    	m_effector = new Effector(m_context);
+    	m_effector = new ConfManager(m_context);
     	//Test data
     	//m_effector.putSharedPreference("designedTab", "selab.dev.uiselfadaptivorg.view.News;selab.dev.uiselfadaptivorg.view.CheckIn;selab.dev.uiselfadaptivorg.view.Info;");
     	//m_effector.putSharedPreference("tab", "selab.dev.uiselfadaptivorg.view.News;selab.dev.uiselfadaptivorg.view.CheckIn;selab.dev.uiselfadaptivorg.view.Info;");
-    	m_felix.getBundleContext().registerService(IEffector.class.getName(), m_effector, null);
-    	System.out.println(IEffector.class.getName());
+    	m_felix.getBundleContext().registerService(IConfManager.class.getName(), m_effector, null);
+    	System.out.println(IConfManager.class.getName());
     }
   //dependence Effector
     public void saveEffector(String value)

@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class Effector implements IEffector {
+public class ConfManager implements IConfManager {
 	
 	private Context mainContext = null;
-	public Effector(Context context) {
+	public ConfManager(Context context) {
 		mainContext = context;
 	}
 	//dependance UsabilityImprover getStreatgy run keyword

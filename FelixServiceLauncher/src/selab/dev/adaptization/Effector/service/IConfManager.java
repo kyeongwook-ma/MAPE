@@ -1,6 +1,6 @@
 package selab.dev.adaptization.Effector.service;
 
-public interface IEffector {
+public interface IConfManager {
 	
 	public boolean run(String tabOrder);
 	public void putSharedPreference(String key, String value);
