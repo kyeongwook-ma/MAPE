@@ -1,12 +1,12 @@
 package mapebundle.adaptmanager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import mapebundle.cfgctlr.ConfigController;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
+
 import usabilityimprover.service.UsabilityImprover;
 
 
