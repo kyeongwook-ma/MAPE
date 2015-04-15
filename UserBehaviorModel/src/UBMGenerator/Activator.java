@@ -3,7 +3,7 @@ package UBMGenerator;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-import UBMGenerator.service.UBMGeneratorService;
+import UBMGenerator.service.LogMonitorService;
 
 
 
@@ -25,7 +25,7 @@ public class Activator implements BundleActivator {
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
 		bundleContext.registerService(
-				UBMGeneratorService.class.getName(),new UBMGeneratorServiceImpl(bundleContext), null);
+				LogMonitorService.class.getName(),new LogMonitor2(bundleContext), null);
 	}
 	
 	/*

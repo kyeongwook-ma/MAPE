@@ -29,21 +29,25 @@ public class AdaptationManager implements IAdaptationManager {
 
 
 	//dependence code
-	public void adapt(BundleContext bundleContext, ArrayList diagnosis,List currModel){		
+	public void adapt(BundleContext bundleContext, List diagnosis, Object currModel){		
 		System.out.println("diagnosis:"+diagnosis);
 		System.out.println("currModel:"+currModel);
 		
-		ArrayList streatgies = null;
+		List streatgies = null;
 		
 ////////////////////////////////Change/////////////////////////////////////
-		ServiceReference ref = bundleContext.getServiceReference(UsabilityImprover.class.getName());
-		if (ref != null)
+	
+		ServiceReference ref2 = bundleContext.getServiceReference(UsabilityImprover.class.getName());
+		if (ref2 != null)
 		{
 			System.out.println("Improver Bundle Find OK!");
-			UsabilityImprover usabilityService = (UsabilityImprover) bundleContext.getService(ref);
+			UsabilityImprover usabilityService = (UsabilityImprover) bundleContext.getService(ref2);
 			streatgies = usabilityService.adapt(diagnosis, currModel);
-			bundleContext.ungetService(ref);
+			bundleContext.ungetService(ref2);
 		}
+		
+		
+		
 ////////////////////////////////Change/////////////////////////////////////
 		
 		if(streatgies != null)

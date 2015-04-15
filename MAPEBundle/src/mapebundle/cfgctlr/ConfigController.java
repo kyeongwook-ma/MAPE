@@ -35,12 +35,12 @@ public class ConfigController implements IConfigController {
 		}
 	}
 
-	public void reconfigure(BundleContext bundleContext, ArrayList strategies,List currModel) 
+	public void reconfigure(BundleContext bundleContext, List strategies, Object currModel) 
 	{
 		System.out.println("ConfigController start:");
 		execute(bundleContext, strategies);
 	}
-	private void execute(BundleContext bundleContext, ArrayList strategies)
+	private void execute(BundleContext bundleContext, List strategies)
 	{
 		for(int i=0;i<strategies.size();i++)
 		{

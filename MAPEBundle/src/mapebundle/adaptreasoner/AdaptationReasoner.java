@@ -1,12 +1,13 @@
 package mapebundle.adaptreasoner;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import mapebundle.adaptmanager.AdaptationManager;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
+
 import badsymptomchecker.services.BadSymptomService;
-import mapebundle.adaptmanager.AdaptationManager;
 
 /**
  * Explanation : 
@@ -36,19 +37,20 @@ public class AdaptationReasoner implements IAdaptationReasoner {
 	}
 
 	//dependence code
-	public void reason(BundleContext bundleContext, String desginedModel,List currModel)  {
+	public void reason(BundleContext bundleContext, Object desginedModel, Object currModel)  {
 		
 		System.out.println("ContextMonitor: Monitoring");
-		ArrayList diagnosis = null;
-		
+		List diagnosis = null;
 ////////////////////////////////Change/////////////////////////////////////
 		ServiceReference ref = bundleContext.getServiceReference(BadSymptomService.class.getName());
 		if (ref != null)
 		{
 			System.out.println("BadSymptom Bundle Find OK!");
-			BadSymptomService badSymptomService = (BadSymptomService) bundleContext.getService(ref);
-			diagnosis = badSymptomService.reason(currModel,desginedModel);
+			
+			BadSymptomService guiBadSymptomAnalyzeService = bundleContext.getService(ref);
+			diagnosis = guiBadSymptomAnalyzeService.reason(currModel, desginedModel);
 			bundleContext.ungetService(ref);
+			
 		}
 ////////////////////////////////Change/////////////////////////////////////
 		

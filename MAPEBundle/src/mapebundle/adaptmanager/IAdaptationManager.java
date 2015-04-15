@@ -8,5 +8,5 @@ import org.osgi.framework.BundleContext;
 
 
 public interface IAdaptationManager {
-	void adapt(BundleContext bundleContext, ArrayList diagnosis,List curUBM);
+	void adapt(BundleContext bundleContext, List diagnosis,Object curUBM);
 }

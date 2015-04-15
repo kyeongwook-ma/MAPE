@@ -1,10 +1,9 @@
 package badsymptomchecker.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 public interface BadSymptomService {
-	ArrayList reason(List currentBM,String designModel);
-	void compareBM(List currentBM,String designModel);
+	List reason(Object currentBM, Object designModel);
+	void compareBM(Object currentBM,Object designModel);
 }

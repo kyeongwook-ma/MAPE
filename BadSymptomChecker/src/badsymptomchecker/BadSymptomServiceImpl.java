@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import badsymptomchecker.rule.Rule;
-import badsymptomchecker.rule.WrongTabRule;
+import badsymptomchecker.rule.WrongPOSGUIRule;
 import badsymptomchecker.services.BadSymptomService;
 
 public class BadSymptomServiceImpl implements BadSymptomService {
@@ -26,11 +26,12 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 		
 		return diffList;
 	}
-	public void compareBM(List currentBM,String designModel)
-	{
-////////////////////////////////Change/////////////////////////////////////
+
+
+	@Override
+	public List reason(Object currentBM, Object designModel) {
 		List ruleList = new ArrayList();
-		ruleList.add(new WrongTabRule());
+		ruleList.add(new WrongPOSGUIRule());
 		
 		System.out.println("Current BM: "+ currentBM.toString());
 		System.out.println("Design Model: "+designModel);
@@ -43,7 +44,14 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 		}
 
 		System.out.println("BadSystom : diff check done");
-////////////////////////////////Change/////////////////////////////////////	
+		return null;
+	}
+
+
+	@Override
+	public void compareBM(Object currentBM, Object designModel) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,6 +1,5 @@
 package usabilityimprover;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +19,10 @@ import usabilityimprover.streatgy.StrategyFactory;
 public class UsabilityImproverImpl implements UsabilityImprover {
 
 	public UsabilityImproverImpl(BundleContext context) {
-		// TODO Auto-generated constructor stub
 		StrategyFactory.bundleContext = context;
 	}
 
-	private ArrayList genStreatgies(ArrayList diagnosis, List curModel) {
+	private ArrayList genStreatgies(List diagnosis, Object curModel) {
 
 		ArrayList strategies = new ArrayList();
 
@@ -36,7 +34,8 @@ public class UsabilityImproverImpl implements UsabilityImprover {
 		return strategies;
 	}
 
-	public ArrayList adapt(ArrayList diagnosis, List curModel) {
+	@Override
+	public List adapt(List diagnosis, Object curModel) {
 		try {
 			return genStreatgies(diagnosis, curModel);
 		} catch (SecurityException e) {
@@ -46,5 +45,6 @@ public class UsabilityImproverImpl implements UsabilityImprover {
 		}
 		return diagnosis;
 	}
+
 }
 

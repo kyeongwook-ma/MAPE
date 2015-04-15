@@ -12,5 +12,5 @@ import org.osgi.framework.BundleContext;
  */
 
 public interface IAdaptationReasoner {
-	void reason(BundleContext bundleContext, String metaData,List currentBM);
+	void reason(BundleContext bundleContext, Object designedModel, Object currentBM);
 }
