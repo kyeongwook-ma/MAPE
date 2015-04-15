@@ -3,5 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: UBMGenerator.service
 Bundle-SymbolicName: UBMGenerator.service
 Bundle-Version: 1.0.0.qualifier
-Export-Package: UBMGenerator.service,
- sogang.selab.model
+Export-Package: UBMGenerator.service
+Require-Bundle: UserBM
+Import-Package: sogang.selab.model

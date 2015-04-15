@@ -42,12 +42,12 @@ public class ContextMonitor implements IContextMonitor {
 			System.out.println("MAPE Bundle Find OK!");
 		
 			LogMonitorService logMonitor = (LogMonitorService) bundleContext.getService(ref);
-			List allTransition = logMonitor.getAllTransition();
-			Transition userTransition = logMonitor.getUserTransition(1);
+			List designedModel = logMonitor.getAllTransition();
+			Transition currentModel = logMonitor.getUserTransition(1);
 			
-			if(userTransition != null) {
+			if(currentModel != null) {
 				// metaData -> designModel : SharedPrefs 
-				AdaptationReasoner.getInstance().reason(bundleContext, allTransition, userTransition);
+				AdaptationReasoner.getInstance().reason(bundleContext, designedModel, currentModel);
 			}
 		}
 		////////////////////////////////Change/////////////////////////////////////

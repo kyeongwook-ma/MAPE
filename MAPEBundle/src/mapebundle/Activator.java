@@ -15,7 +15,6 @@ public class Activator implements BundleActivator {
 	}
 	@Override
 	public void stop(BundleContext bundleContext) {
-		// TODO Auto-generated method stub
 		
 	}
 	
