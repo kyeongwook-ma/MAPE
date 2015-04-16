@@ -1,16 +1,15 @@
 package mapebundle.ctxmonitor;
 
-import java.io.IOException;
 import java.util.List;
+
+import mapebundle.adaptreasoner.AdaptationReasoner;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-import sogang.selab.model.AFSM;
 import sogang.selab.model.Transition;
 import UBMGenerator.service.LogMonitorService;
 import UBMGenerator.service.UBMGeneratorService;
-import mapebundle.adaptreasoner.AdaptationReasoner;
 
 
 /**
@@ -42,8 +41,8 @@ public class ContextMonitor implements IContextMonitor {
 			System.out.println("MAPE Bundle Find OK!");
 		
 			LogMonitorService logMonitor = (LogMonitorService) bundleContext.getService(ref);
-			List designedModel = logMonitor.getAllTransition();
-			Transition currentModel = logMonitor.getUserTransition(1);
+			Object designedModel = logMonitor.getAllTransition();
+			Object currentModel = logMonitor.getUserTransition(1);
 			
 			if(currentModel != null) {
 				// metaData -> designModel : SharedPrefs 

@@ -1,0 +1,2 @@
+user_id	seq_id	target	x	y	event
+1	1	MainFrame	62	427	onScroll
