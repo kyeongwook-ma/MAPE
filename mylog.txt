@@ -1,2 +1,8 @@
 user_id	seq_id	target	x	y	event
 1	1	MainFrame	62	427	onScroll
+1	2	MainFrame	59	437	onScroll
+1	3	MainFrame	60	429	onScroll
+2	1	MainFrame	57	435	onScroll
+2	2	MainFrame	54	428	onScroll
+2	3	btnPurchase	56	444	onClick
+
