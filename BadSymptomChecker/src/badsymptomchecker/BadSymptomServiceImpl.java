@@ -18,24 +18,25 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 	}
 
 
-	public List reason(List currentBM, String designModel) {
+	@Override
+	public List reason(Object currentBM, Object designModel) {
 		initRuleSet();
-		
+
 		//LogData check 
-		compareBM(currentBM,designModel);
-		
+		compareBM(currentBM, designModel);
+
 		return diffList;
 	}
 
 
 	@Override
-	public List reason(Object currentBM, Object designModel) {
+	public void compareBM(Object currentBM, Object designModel) {
 		List ruleList = new ArrayList();
 		ruleList.add(new WrongPOSGUIRule());
-		
+
 		System.out.println("Current BM: "+ currentBM.toString());
 		System.out.println("Design Model: "+designModel);
-		
+
 		for(Object rule : ruleList) {
 			Rule castedRule = (Rule) rule;
 			System.out.println(castedRule.getRuleType());
@@ -44,14 +45,7 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 		}
 
 		System.out.println("BadSystom : diff check done");
-		return null;
-	}
 
-
-	@Override
-	public void compareBM(Object currentBM, Object designModel) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

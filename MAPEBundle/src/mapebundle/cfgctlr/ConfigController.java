@@ -42,7 +42,7 @@ public class ConfigController implements IConfigController {
 	}
 	private void execute(BundleContext bundleContext, List strategies)
 	{
-		for(int i=0;i<strategies.size();i++)
+		for(int i = 0; i < strategies.size(); i++)
 		{
 			Strategy streatgy = (Strategy) strategies.get(i);
 			

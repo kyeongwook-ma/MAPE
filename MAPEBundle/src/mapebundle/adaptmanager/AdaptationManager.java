@@ -46,8 +46,6 @@ public class AdaptationManager implements IAdaptationManager {
 			bundleContext.ungetService(ref);
 		}
 		
-		
-		
 ////////////////////////////////Change/////////////////////////////////////
 		
 		if(streatgies != null)

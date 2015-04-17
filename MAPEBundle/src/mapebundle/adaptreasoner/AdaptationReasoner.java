@@ -37,7 +37,7 @@ public class AdaptationReasoner implements IAdaptationReasoner {
 	}
 
 	//dependence code
-	public void reason(BundleContext bundleContext, Object desginedModel, Object currModel)  {
+	public void reason(BundleContext bundleContext, Object currModel,  Object desginedModel)  {
 		
 		System.out.println("ContextMonitor: Monitoring");
 		List diagnosis = null;
@@ -55,7 +55,7 @@ public class AdaptationReasoner implements IAdaptationReasoner {
 ////////////////////////////////Change/////////////////////////////////////
 		
 		if(diagnosis != null)
-			AdaptationManager.getInstance().adapt(bundleContext,diagnosis,currModel);
+			AdaptationManager.getInstance().adapt(bundleContext, diagnosis, currModel);
 	}
 
 }
