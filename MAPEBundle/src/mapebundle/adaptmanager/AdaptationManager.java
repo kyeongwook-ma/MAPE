@@ -37,13 +37,13 @@ public class AdaptationManager implements IAdaptationManager {
 		
 ////////////////////////////////Change/////////////////////////////////////
 	
-		ServiceReference ref2 = bundleContext.getServiceReference(UsabilityImprover.class.getName());
-		if (ref2 != null)
+		ServiceReference ref = bundleContext.getServiceReference(UsabilityImprover.class.getName());
+		if (ref != null)
 		{
 			System.out.println("Improver Bundle Find OK!");
-			UsabilityImprover usabilityService = (UsabilityImprover) bundleContext.getService(ref2);
+			UsabilityImprover usabilityService = (UsabilityImprover) bundleContext.getService(ref);
 			streatgies = usabilityService.adapt(diagnosis, currModel);
-			bundleContext.ungetService(ref2);
+			bundleContext.ungetService(ref);
 		}
 		
 		

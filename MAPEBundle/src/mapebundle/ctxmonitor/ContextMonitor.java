@@ -1,15 +1,11 @@
 package mapebundle.ctxmonitor;
 
-import java.util.List;
-
 import mapebundle.adaptreasoner.AdaptationReasoner;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-import sogang.selab.model.Transition;
 import UBMGenerator.service.LogMonitorService;
-import UBMGenerator.service.UBMGeneratorService;
 
 
 /**
@@ -35,7 +31,7 @@ public class ContextMonitor implements IContextMonitor {
 		System.out.println("ContextMonitor: Monitoring");
 
 		////////////////////////////////Change/////////////////////////////////////
-		ServiceReference ref = bundleContext.getServiceReference(UBMGeneratorService.class.getName());
+		ServiceReference ref = bundleContext.getServiceReference(LogMonitorService.class.getName());
 		if (ref != null)
 		{
 			System.out.println("MAPE Bundle Find OK!");

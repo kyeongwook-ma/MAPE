@@ -18,7 +18,7 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 	}
 
 
-	public ArrayList reason(List currentBM, String designModel) {
+	public List reason(List currentBM, String designModel) {
 		initRuleSet();
 		
 		//LogData check 
