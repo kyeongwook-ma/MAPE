@@ -22,14 +22,12 @@ import UBMGenerator.service.LogMonitorService;
 public class LogMonitor2 implements LogMonitorService{
 
 	private static ArrayList<Transition> transitions = new ArrayList<Transition>();
-	private static HashMap<Integer, List<Transition>> userBMMap = new HashMap<Integer, List<Transition>>();
 	private BundleContext bundleContext;
 	private BufferedReader br;
 
 	public LogMonitor2(BundleContext bundleContext) {
 		this.bundleContext = bundleContext;
 		transitions = (ArrayList<Transition>) getAllTransition();
-
 
 		try {
 			br = new BufferedReader(new FileReader(new File( "/data/mylog.txt")));
@@ -47,6 +45,7 @@ public class LogMonitor2 implements LogMonitorService{
 			String strLine = null;   
 
 			try {
+				
 				while( (strLine = br.readLine()) != null) {
 
 					StringTokenizer st = new StringTokenizer(strLine, "\t");
@@ -64,10 +63,8 @@ public class LogMonitor2 implements LogMonitorService{
 					transitions.add(t);
 				}
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 		}
@@ -117,11 +114,17 @@ public class LogMonitor2 implements LogMonitorService{
 	}
 
 	@Override
-	public Transition getUserTransition(int userId) {
+	public List<Transition> getUserTransition(int userId) {
+		
+		ArrayList<Transition> userBMs = new ArrayList<Transition>();
+		
 		State s1 = State.newInstance("MainFrame");
 		State s2 = State.newInstance("MainFrame");
-
-		return new TransitionBuilder(s1, s2).createTransition();
+		Transition t = new TransitionBuilder(s1, s2).createTransition();
+		
+		userBMs.add(t);
+		
+		return userBMs;
 	}
 
 }

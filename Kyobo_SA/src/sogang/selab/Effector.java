@@ -34,6 +34,6 @@ public class Effector {
 		FrameLayout.LayoutParams lp2 = (android.widget.FrameLayout.LayoutParams) rootView.getLayoutParams();
 		targetView.measure(MeasureSpec.UNSPECIFIED,MeasureSpec.UNSPECIFIED);
 		lp.setMargins(0, btnPurchase.getMeasuredHeight(), 0, 0);
-		rootView.setLayoutParams(lp);
+		rootView.setLayoutParams(lp2);
 	}
 }

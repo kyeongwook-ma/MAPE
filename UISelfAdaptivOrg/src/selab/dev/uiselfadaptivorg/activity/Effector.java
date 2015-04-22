@@ -7,7 +7,7 @@ import selab.dev.uiselfadaptivorg.view.TabView;
 import android.view.View;
 
 public class Effector {
-	public String	getCurrentTab(TabView tabView)
+	public String getCurrentTab(TabView tabView)
 	{
 		String tabOrder = "";
 		for(int i=0; i < tabView.getChildCount(); i++)

@@ -46,7 +46,7 @@ public class ConfigController implements IConfigController {
 		{
 			Strategy streatgy = (Strategy) strategies.get(i);
 			
-			ServiceReference ref = bundleContext.getServiceReference("selab.dev.adaptization.Effector.service.IEffector");
+			ServiceReference ref = bundleContext.getServiceReference("selab.dev.adaptization.Effector.service.IConfManager");
 			if (ref != null)
 			{
 				System.out.println("Config Find!!");

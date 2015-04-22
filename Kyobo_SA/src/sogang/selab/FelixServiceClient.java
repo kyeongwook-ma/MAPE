@@ -30,10 +30,10 @@ public class FelixServiceClient {
 		Intent intent = mainActivity.getIntent();
 		intent.setComponent( 
 				new ComponentName(
-						"sogang.selab",
-						"sogang.selab.FelixService"));
+						"selab.dev.adaptization.felixservicelauncher",
+						"selab.dev.adaptization.felixservicelauncher.FelixService"));
 		mainActivity.startService(intent);
-
+		
 		Handler handler = new Handler(); 
 		handler.postDelayed(new Runnable() { 
 			public void run() { 
