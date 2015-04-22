@@ -61,7 +61,7 @@ public class ConfigController implements IConfigController {
 	public static Object startBundleMethod(Object service ,String methodgetName,Class[] parameterTypes,Object[] parameters) 
 	{
 		Object returnObject = null;
-		//System.out.println(service.getClass().getName());
+
 		if(service != null)
 		{
 			try {

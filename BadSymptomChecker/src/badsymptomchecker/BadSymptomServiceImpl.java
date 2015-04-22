@@ -31,7 +31,7 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 
 	@Override
 	public void compareBM(Object currentBM, Object designModel) {
-		List ruleList = new ArrayList();
+		ArrayList ruleList = new ArrayList();
 		ruleList.add(new WrongPOSGUIRule());
 
 		System.out.println("Current BM: "+ currentBM.toString());

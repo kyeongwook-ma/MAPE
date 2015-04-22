@@ -50,7 +50,6 @@ public class AdaptationReasoner implements IAdaptationReasoner {
 			BadSymptomService guiBadSymptomAnalyzeService = bundleContext.getService(ref);
 			diagnosis = guiBadSymptomAnalyzeService.reason(currModel, desginedModel);
 			bundleContext.ungetService(ref);
-			
 		}
 ////////////////////////////////Change/////////////////////////////////////
 		
