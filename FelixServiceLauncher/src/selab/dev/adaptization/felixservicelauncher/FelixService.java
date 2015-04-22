@@ -34,7 +34,7 @@ public class FelixService extends Service {
 	public static String clientIntentPackageName;
 	private BroadcastReceiver receiver;
 	private boolean registered;
-	
+
 	@Override
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub
@@ -42,43 +42,36 @@ public class FelixService extends Service {
 	}
 	@Override
 	public void onCreate() {
-//////////////load file////////////////////	
+		//////////////load file////////////////////	
 		try {
-//			String []mape = new String[3];
-//			mape[0] = "mapebundle";
-//			mape[1] = "mapebundle.ctxmonitor.ContextMonitor";
-//			mape[2] = "Monitoring";
-			 
-				
-//			FelixService.clientIntentPackageName = "selab.dev.uiselfadaptiveorg.activity.MainActivity";
-			
+
 			File file = new File("/data/felix/felix_config.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder;
-			
-				dBuilder = dbFactory.newDocumentBuilder();
-			
+
+			dBuilder = dbFactory.newDocumentBuilder();
+
 			Document doc = dBuilder.parse(file);
-			
+
 			XPath xpath = XPathFactory.newInstance().newXPath();
-	        Node nodemape = (Node)xpath.evaluate("//config_list/mapbundle", doc, XPathConstants.NODE);
-	        if(nodemape != null)
-	        {
-	        	String []mape = new String[3];
-	        	NamedNodeMap attrMap = nodemape.getAttributes();
-	        	mape[0] = attrMap.getNamedItem("bundle_name").getTextContent();
-	        	mape[1] = attrMap.getNamedItem("service_name").getTextContent();
-	        	mape[2] = attrMap.getNamedItem("method_name").getTextContent();
-	        	AdaptationBundleActivator.mapebundle_start_name = mape;
-	        }
-	        
-	        Node nodeclient = (Node)xpath.evaluate("//config_list/client_package", doc, XPathConstants.NODE);
-	        if(nodeclient != null)
-	        {
-	        	NamedNodeMap attrMap = nodeclient.getAttributes();
-	        	FelixService.clientIntentPackageName = attrMap.getNamedItem("name").getTextContent();
-	        }
-	        
+			Node nodemape = (Node)xpath.evaluate("//config_list/mapbundle", doc, XPathConstants.NODE);
+			if(nodemape != null)
+			{
+				String []mape = new String[3];
+				NamedNodeMap attrMap = nodemape.getAttributes();
+				mape[0] = attrMap.getNamedItem("bundle_name").getTextContent();
+				mape[1] = attrMap.getNamedItem("service_name").getTextContent();
+				mape[2] = attrMap.getNamedItem("method_name").getTextContent();
+				AdaptationBundleActivator.mapebundle_start_name = mape;
+			}
+
+			Node nodeclient = (Node)xpath.evaluate("//config_list/client_package", doc, XPathConstants.NODE);
+			if(nodeclient != null)
+			{
+				NamedNodeMap attrMap = nodeclient.getAttributes();
+				FelixService.clientIntentPackageName = attrMap.getNamedItem("name").getTextContent();
+			}
+
 		} catch (ParserConfigurationException e) {    
 			e.printStackTrace();
 		} catch (SAXException e) {
@@ -88,42 +81,41 @@ public class FelixService extends Service {
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();
 		}
-	
-//////////////load file////////////////////
-		
+
+		//////////////load file////////////////////
+
 		//dependence Client
 		if (receiver == null) {
 			receiver = new BroadcastReceiver() {
-		        @Override
-		        public void onReceive(Context context, Intent intent)
-		        {
-		        	String out = intent.getStringExtra("activity_result");
-		        	System.out.println("exit:"+out);
-		        	if(runFelix != null)
-		        		runFelix.saveEffector(out);
-		        }
-		      };
-	    }
+				@Override
+				public void onReceive(Context context, Intent intent)
+				{
+					String out = intent.getStringExtra("activity_result");
+					System.out.println("exit:"+out);
+					if(runFelix != null)
+						runFelix.saveEffector(out);
+				}
+			};
+		}
 		if (!registered) {
-		    //registerReceiver(receiver, new IntentFilter("selab.dev.uiselfadaptiveorg.activity.MainActivity"));
 			registerReceiver(receiver, new IntentFilter(clientIntentPackageName));
-		    registered = true;
-	    }
+			registered = true;
+		}
 		super.onCreate();
 	}
 	public void sendMessage(String msg) {
 		Intent i = new Intent(getClass().getName());
 		i.putExtra("serivce_execute_result", msg);
-	    sendBroadcast(i);
+		sendBroadcast(i);
 	}
 	@Override
 	public void onDestroy() {
 
-		System.out.println("¼­ºñ½º Finish");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ Finish");
 		if (registered) {
-	      unregisterReceiver(receiver);
-	      registered = false;
-	    }
+			unregisterReceiver(receiver);
+			registered = false;
+		}
 		if(runFelix != null)
 		{
 			runFelix.onStop();
@@ -135,11 +127,11 @@ public class FelixService extends Service {
 	}
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		System.out.println("¼­ºñ½º Start");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ Start");
 		//System.out.println("Package:"+intent.getPackage());
 		//System.out.println("Action:"+intent.getAction());
 		//System.out.println("CompoentName:"+intent.getComponent());
-		
+
 		if(intent.getAction() == null)
 		{
 			if(FelixService.runFelix == null)
@@ -147,7 +139,7 @@ public class FelixService extends Service {
 				FelixService.runFelix = new AdaptationBundleActivator(getApplicationContext(),getFilesDir().getAbsolutePath(), getResources());
 				FelixService.runFelix.onCreate();
 				FelixService.runFelix.onStart();
-				
+
 				sendMessage("Service Start");
 			}
 			else

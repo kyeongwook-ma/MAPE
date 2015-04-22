@@ -13,7 +13,6 @@ public class ConfManager implements IConfManager {
 	//dependance UsabilityImprover getStreatgy run keyword
 	@Override
 	public boolean run(String tabOrder) {
-		//String tabOrder = "selab.dev.uiselfadaptivorg.view.News;selab.dev.uiselfadaptivorg.view.CheckIn;selab.dev.uiselfadaptivorg.view.Info;";
 		if(mainContext != null)
 			putSharedPreference("tab", tabOrder);
 		return true;

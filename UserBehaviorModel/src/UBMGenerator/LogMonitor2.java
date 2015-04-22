@@ -22,14 +22,12 @@ import UBMGenerator.service.LogMonitorService;
 public class LogMonitor2 implements LogMonitorService{
 
 	private static ArrayList<Transition> transitions = new ArrayList<Transition>();
-	private static HashMap<Integer, List<Transition>> userBMMap = new HashMap<Integer, List<Transition>>();
 	private BundleContext bundleContext;
 	private BufferedReader br;
 
 	public LogMonitor2(BundleContext bundleContext) {
 		this.bundleContext = bundleContext;
 		transitions = (ArrayList<Transition>) getAllTransition();
-
 
 		try {
 			br = new BufferedReader(new FileReader(new File( "/data/mylog.txt")));
@@ -47,6 +45,7 @@ public class LogMonitor2 implements LogMonitorService{
 			String strLine = null;   
 
 			try {
+				
 				while( (strLine = br.readLine()) != null) {
 
 					StringTokenizer st = new StringTokenizer(strLine, "\t");

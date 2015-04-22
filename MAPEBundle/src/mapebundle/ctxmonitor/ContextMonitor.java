@@ -21,11 +21,11 @@ public class ContextMonitor implements IContextMonitor {
 	private BundleContext bundleContext;
 
 	public ContextMonitor(BundleContext bundleContext) {
-
 		activate();
 		this.bundleContext = bundleContext;
 		System.out.println("ContextMonitor: start");	
 	}
+	
 	public void Monitoring() {
 
 		System.out.println("ContextMonitor: Monitoring");
@@ -35,7 +35,7 @@ public class ContextMonitor implements IContextMonitor {
 		if (ref != null)
 		{
 			System.out.println("MAPE Bundle Find OK!");
-		
+			
 			LogMonitorService logMonitor = (LogMonitorService) bundleContext.getService(ref);
 			Object currentModel = logMonitor.getUserTransition(1);
 			Object designedModel = logMonitor.getAllTransition();
@@ -47,7 +47,6 @@ public class ContextMonitor implements IContextMonitor {
 		}
 		////////////////////////////////Change/////////////////////////////////////
 
-		
 	}
 	public void activate() {
 		isRunning = true;
