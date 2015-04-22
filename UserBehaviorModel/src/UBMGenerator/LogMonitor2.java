@@ -64,10 +64,8 @@ public class LogMonitor2 implements LogMonitorService{
 					transitions.add(t);
 				}
 			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
 		}
@@ -117,11 +115,16 @@ public class LogMonitor2 implements LogMonitorService{
 	}
 
 	@Override
-	public Transition getUserTransition(int userId) {
+	public List<Transition> getUserTransition(int userId) {
+		
+		ArrayList<Transition> userBMs = new ArrayList<Transition>();
+		
 		State s1 = State.newInstance("MainFrame");
 		State s2 = State.newInstance("MainFrame");
-
-		return new TransitionBuilder(s1, s2).createTransition();
+		Transition t = new TransitionBuilder(s1, s2).createTransition();
+		
+		userBMs.add(t);
+		
+		return userBMs;
 	}
-
 }

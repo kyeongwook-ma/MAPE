@@ -7,6 +7,6 @@ import sogang.selab.model.Transition;
 
 public interface LogMonitorService {
 	List<Transition> getAllTransition(); 
-	Transition getUserTransition(int userId);
+	List<Transition>getUserTransition(int userId);
 	HashMap<Transition, Double> calculatedRatioMap();
 }
