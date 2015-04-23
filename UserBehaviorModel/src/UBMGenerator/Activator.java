@@ -25,7 +25,7 @@ public class Activator implements BundleActivator {
 	public void start(BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
 		bundleContext.registerService(
-				LogMonitorService.class.getName(),new LogMonitor2(bundleContext), null);
+				LogMonitorService.class.getName(), new LogMonitor2(), null);
 	}
 	
 	/*

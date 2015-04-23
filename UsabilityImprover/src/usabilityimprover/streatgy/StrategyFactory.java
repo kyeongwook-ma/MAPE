@@ -1,7 +1,5 @@
 package usabilityimprover.streatgy;
 
-import java.util.List;
-
 import org.osgi.framework.BundleContext;
 
 import usabilityimprover.service.Strategy;

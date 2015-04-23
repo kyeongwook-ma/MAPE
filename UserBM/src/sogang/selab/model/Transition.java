@@ -10,6 +10,7 @@ import java.util.Iterator;
  */
 public class Transition {
 
+	private int ownUserId;
 	private State src, dst;
 	private double timestamp;
 	private String event;
@@ -83,7 +84,8 @@ public class Transition {
 	 * 
 	 */
 	public static class TransitionBuilder {
-
+		
+		private int ownUserId;
 		private State src, dst;
 		private double timestamp;
 		private Point touchPoint;
@@ -96,6 +98,11 @@ public class Transition {
 			targets = new HashSet<String>();
 		}
 
+		public TransitionBuilder ownId(int ownId) {
+			this.ownUserId = ownId;
+			return this;
+		}
+		
 		public TransitionBuilder point(Point p) {
 			this.touchPoint = p;
 			return this;
@@ -123,8 +130,9 @@ public class Transition {
 			Transition t = new Transition(this.src, this.dst);
 			t.setEvent(this.event);
 			t.setTouchPoint(this.touchPoint);
-			t.addTarget(targets);
+			t.addTarget(this.targets);
 			t.setTimestamp(this.timestamp);
+			t.setOwnUserId(this.ownUserId);
 			return t;
 		}
 	}
@@ -190,6 +198,14 @@ public class Transition {
 	public int hashCode() {
 		return (String.valueOf(src.getStateId()) + 
 				String.valueOf(dst.getStateId())).hashCode();
+	}
+
+	public int getOwnUserId() {
+		return ownUserId;
+	}
+
+	public void setOwnUserId(int ownUserId) {
+		this.ownUserId = ownUserId;
 	}
 
 	
