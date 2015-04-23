@@ -21,8 +21,7 @@ public class MainActivity_SA extends Activity {
 
 	private Button btnPurchase, btnMarket;
 	private ScrollView sView;
-	private MyView targetView;
-	private LinearLayout rootView;
+	private LinearLayout targetView,rootView;
 	private FelixServiceClient fService;
 	private boolean isRegistered;
 	
@@ -32,7 +31,7 @@ public class MainActivity_SA extends Activity {
 		setContentView(R.layout.main);
 		sView = (ScrollView)findViewById(R.id.scrollView1);
 		btnPurchase = (Button)findViewById(R.id.btnPurchase);
-		targetView = (MyView)findViewById(R.id.targetview);
+		targetView = (LinearLayout)findViewById(R.id.targetview);
 		rootView  = (LinearLayout) findViewById(R.id.rootview);
 		
 		sView.setOnTouchListener(new OnTouchListener() {

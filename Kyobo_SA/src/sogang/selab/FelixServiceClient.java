@@ -52,7 +52,7 @@ public class FelixServiceClient {
 				@Override
 				public void onReceive(Context context, Intent intent)
 				{
-					String outValue = intent.getStringExtra("serivce_execute_result");
+					// String outValue = intent.getStringExtra("serivce_execute_result");
 					//	mainActivity.addContentView(tabView.getRootView(), params);
 					messageRecive = true;
 				}

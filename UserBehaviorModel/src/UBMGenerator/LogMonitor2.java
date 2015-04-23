@@ -50,6 +50,7 @@ public class LogMonitor2 implements LogMonitorService{
 
 					StringTokenizer st = new StringTokenizer(strLine, "\t");
 					int seq = Integer.valueOf(st.nextToken());
+					String target = st.nextToken();
 					float x = Float.parseFloat(st.nextToken());
 					float y = Float.parseFloat(st.nextToken());
 					String event = st.nextToken();
@@ -58,7 +59,7 @@ public class LogMonitor2 implements LogMonitorService{
 					State s2 = State.newInstance(String.valueOf(seq+1));
 
 					Transition t = new TransitionBuilder(s, s2)
-					.event(event).point(new Point(x, y)).createTransition();
+					.target(target).event(event).point(new Point(x, y)).createTransition();
 
 					transitions.add(t);
 				}
