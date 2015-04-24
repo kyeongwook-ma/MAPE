@@ -1,6 +1,7 @@
 package badsymptomchecker.rule;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class WrongPOSGUIRule implements Rule{
 

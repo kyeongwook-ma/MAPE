@@ -17,7 +17,6 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 		diffList = new ArrayList<String>();
 	}
 
-
 	@Override
 	public List reason(List currentBM, String designModel) {
 		initRuleSet();
@@ -45,7 +44,6 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 		}
 
 		System.out.println("BadSystom : diff check done");
-
 	}
 
 }
