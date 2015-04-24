@@ -4,8 +4,6 @@ Bundle-SymbolicName: UBMGenerator
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: UBMGenerator.Activator
 Export-Package: UBMGenerator
-Require-Bundle: UBMGenerator.service;bundle-version="1.0.0",
- UserBM
+Require-Bundle: UBMGenerator.service;bundle-version="1.0.0"
 Bundle-Name: UBMGenerator
 Import-Package: org.osgi.framework;version="1.3.0"
-

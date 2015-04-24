@@ -1,6 +1,5 @@
 package usabilityimprover.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,5 +10,5 @@ import java.util.List;
  */
 
 public interface UsabilityImprover {
-	List adapt(List diagnosis, Object currModel);
+	List adapt(List diagnosis, List currModel);
 }

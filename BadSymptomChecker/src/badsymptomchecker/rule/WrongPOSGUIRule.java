@@ -2,8 +2,6 @@ package badsymptomchecker.rule;
 
 import java.util.List;
 
-import sogang.selab.model.Transition;
-
 public class WrongPOSGUIRule implements Rule{
 
 	private int ruleType;
@@ -12,18 +10,18 @@ public class WrongPOSGUIRule implements Rule{
 		return ruleType;
 	}
 
-	private double getRatio(List<Transition> currBM, List<Transition> designedBM) {
-
-		int ratio = 0;
-
-		for(Transition t : currBM) {
-			if(designedBM.contains(t)) {
-				ratio++;
-			}
-		}
-
-		return ratio / designedBM.size();
-	}
+//	private double getRatio(List<Transition> currBM, List<Transition> designedBM) {
+//
+//		int ratio = 0;
+//
+//		for(Transition t : currBM) {
+//			if(designedBM.contains(t)) {
+//				ratio++;
+//			}
+//		}
+//
+//		return ratio / designedBM.size();
+//	}
 
 	@Override
 	public boolean myRule(List currentBM, String designModel) {

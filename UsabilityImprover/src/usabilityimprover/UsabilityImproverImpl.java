@@ -22,7 +22,7 @@ public class UsabilityImproverImpl implements UsabilityImprover {
 		StrategyFactory.bundleContext = context;
 	}
 
-	private ArrayList genStreatgies(List diagnosis, Object curModel) {
+	private ArrayList genStreatgies(List diagnosis, List curModel) {
 
 		ArrayList strategies = new ArrayList();
 
@@ -35,7 +35,7 @@ public class UsabilityImproverImpl implements UsabilityImprover {
 	}
 
 	@Override
-	public List adapt(List diagnosis, Object curModel) {
+	public List adapt(List diagnosis, List curModel) {
 		try {
 			return genStreatgies(diagnosis, curModel);
 		} catch (SecurityException e) {

@@ -9,5 +9,4 @@ Import-Package:
  org.osgi.framework;version="1.3.0"
 Require-Bundle: UBMGenerator.service;bundle-version="1.0.0",
  BadSymptomChecker.services;bundle-version="1.0.0",
- UsabilityImprover.service;bundle-version="1.0.0",
- UserBM
+ UsabilityImprover.service;bundle-version="1.0.0"

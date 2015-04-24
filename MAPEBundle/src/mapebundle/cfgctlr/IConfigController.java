@@ -14,5 +14,5 @@ import org.osgi.framework.BundleContext;
  */
 
 public interface IConfigController {
-	public void reconfigure(BundleContext bundleContext, List strategies, Object curUBM);
+	public void reconfigure(BundleContext bundleContext, List strategies, List curUBM);
 }

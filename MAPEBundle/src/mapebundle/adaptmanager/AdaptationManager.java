@@ -29,7 +29,7 @@ public class AdaptationManager implements IAdaptationManager {
 
 
 	//dependence code
-	public void adapt(BundleContext bundleContext, List diagnosis, Object currModel){		
+	public void adapt(BundleContext bundleContext, List diagnosis, List currModel){		
 		System.out.println("diagnosis:"+diagnosis);
 		System.out.println("currModel:"+currModel);
 		
@@ -51,5 +51,7 @@ public class AdaptationManager implements IAdaptationManager {
 		if(streatgies != null)
 			ConfigController.getInstance().reconfigure(bundleContext, streatgies, currModel);
 	}
+
+
 
 }

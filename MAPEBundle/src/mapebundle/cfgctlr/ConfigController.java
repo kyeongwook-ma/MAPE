@@ -35,7 +35,7 @@ public class ConfigController implements IConfigController {
 		}
 	}
 
-	public void reconfigure(BundleContext bundleContext, List strategies, Object currModel) 
+	public void reconfigure(BundleContext bundleContext, List strategies, List currModel) 
 	{
 		System.out.println("ConfigController start:");
 		execute(bundleContext, strategies);

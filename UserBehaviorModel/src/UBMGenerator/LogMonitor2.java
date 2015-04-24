@@ -20,7 +20,6 @@ import UBMGenerator.service.LogMonitorService;
 
 public class LogMonitor2 implements LogMonitorService {
 
-	private static ArrayList<Transition> transitions = new ArrayList<Transition>();
 	private BufferedReader br;
 
 	public LogMonitor2() {
