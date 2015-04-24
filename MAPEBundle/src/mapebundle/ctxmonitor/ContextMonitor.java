@@ -1,5 +1,7 @@
 package mapebundle.ctxmonitor;
 
+import java.util.List;
+
 import mapebundle.adaptreasoner.AdaptationReasoner;
 
 import org.osgi.framework.BundleContext;
@@ -25,24 +27,28 @@ public class ContextMonitor implements IContextMonitor {
 		this.bundleContext = bundleContext;
 		System.out.println("ContextMonitor: start");	
 	}
-	
+
 	public void Monitoring() {
 
 		System.out.println("ContextMonitor: Monitoring");
-
+		String designedModel;
+		List currModel;
 		////////////////////////////////Change/////////////////////////////////////
 		ServiceReference ref = bundleContext.getServiceReference(LogMonitorService.class.getName());
 		if (ref != null)
 		{
+
 			System.out.println("MAPE Bundle Find OK!");
-			
-			LogMonitorService logMonitor = (LogMonitorService) bundleContext.getService(ref);
-			Object currentModel = logMonitor.getUserTransition(1);
-			Object designedModel = logMonitor.getAllTransition();
-			
-			if(currentModel != null) {
+			LogMonitorService ubmGenerator = (LogMonitorService) bundleContext.getService(ref);
+			designedModel = ubmGenerator.getDesignedModel();
+			currModel = ubmGenerator.genCurBM("/data/");
+			bundleContext.ungetService(ref);
+
+			System.out.println("MAPE Bundle Find OK!");
+
+			if(currModel != null) {
 				// metaData -> designModel : SharedPrefs 
-				AdaptationReasoner.getInstance().reason(bundleContext, currentModel, designedModel);
+				AdaptationReasoner.getInstance().reason(bundleContext, currModel, designedModel);
 			}
 		}
 		////////////////////////////////Change/////////////////////////////////////

@@ -16,22 +16,35 @@ import sogang.selab.model.Point;
 import sogang.selab.model.State;
 import sogang.selab.model.Transition;
 import sogang.selab.model.Transition.TransitionBuilder;
+import UBMGenerator.service.LogMonitorService;
 
-public class LogMonitor2{
+public class LogMonitor2 implements LogMonitorService {
 
 	private static ArrayList<Transition> transitions = new ArrayList<Transition>();
 	private BufferedReader br;
 
 	public LogMonitor2() {
-		transitions = (ArrayList<Transition>) getAllTransition();
+
 	}
 
-	private List<String> getlogLines() {
+	private String getNextTarget(String nextLine) {		
+		StringTokenizer st2 = new StringTokenizer(nextLine, "\t");
+		System.out.println(nextLine);
+		for(int i = 0; i < 1; ++i) {
+			st2.nextToken();
+		}
+
+		String nextTarget = st2.nextToken();
+		return nextTarget;
+	}
+
+	@Override
+	public List genCurBM(String dirPath) {
 
 		ArrayList<String> logLines = new ArrayList<String>();
 
 		try {
-			br = new BufferedReader(new FileReader(new File( "/data/mylog.txt")));
+			br = new BufferedReader(new FileReader(new File(dirPath)));
 
 			String strLine = null;   
 
@@ -48,113 +61,45 @@ public class LogMonitor2{
 		return logLines;
 	}
 
-	public List<Transition> getAllTransition() {
+	@Override
+	public String getDesignedModel() {
+
+		StringBuilder sb = new StringBuilder();
 
 		/* 비어있는 경우에 디비에서 추출하여 반환 */
-		if(transitions.size() <= 0) {
-			List<String> logLines = getlogLines();
-			try {
+		List<String> logLines = genCurBM("/data/mylog.txt");
 
-				for(int i = 0; i < logLines.size(); ++i) {
+		for(int i = 0; i < logLines.size(); ++i) {
 
-					StringTokenizer st = new StringTokenizer(logLines.get(i), "\t");
-					int ownId = Integer.valueOf(st.nextToken());
-					String target = st.nextToken();
-					float x = Float.parseFloat(st.nextToken());
-					float y = Float.parseFloat(st.nextToken());
-					String event = st.nextToken();
+			StringTokenizer st = new StringTokenizer(logLines.get(i), "\t");
+			int ownId = Integer.valueOf(st.nextToken());
+			String target = st.nextToken();
+			float x = Float.parseFloat(st.nextToken());
+			float y = Float.parseFloat(st.nextToken());
+			String event = st.nextToken();
 
-					State s, s2;
-					if(i < logLines.size()-1) {
-						s = State.newInstance(String.valueOf(target));
-						
-						String nextTarget = getNextTarget(logLines.get(i+1));
-						
-						s2 = State.newInstance(nextTarget);
-					} else {
-						s = State.newInstance(target);
-						s2 = State.newInstance(null);
-					}
+			State s, s2;
+			if(i < logLines.size()-1) {
+				s = State.newInstance(String.valueOf(target));
 
-					Transition t = new TransitionBuilder(s, s2)
-					.target(target).event(event).point(new Point(x, y)).createTransition();
+				String nextTarget = getNextTarget(logLines.get(i+1));
 
-					transitions.add(t);
-
-				}
-
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} 
-		}
-
-		return transitions;
-	}
-
-	private String getNextTarget(String nextLine) {		
-		StringTokenizer st2 = new StringTokenizer(nextLine, "\t");
-		System.out.println(nextLine);
-		for(int i = 0; i < 1; ++i) {
-			st2.nextToken();
-		}
-		
-		String nextTarget = st2.nextToken();
-		return nextTarget;
-	}
-
-	public HashMap<Transition, Double> calculatedRatioMap() {
-
-		List<Transition> allTransitions;
-		try {
-			allTransitions = getAllTransition();
-
-			HashMap<Transition, Double> transitionRatioMap
-			= new HashMap<Transition, Double>();
-
-			int transitionSize = allTransitions.size();
-
-			for(Transition t : allTransitions) {
-
-				if(transitionRatioMap.containsKey(t)) {	
-					double preRatio = transitionRatioMap.get(t);
-					double currRatio = getCurrRatio(preRatio, transitionSize);
-					transitionRatioMap.put(t, currRatio);
-
-				} else {
-					transitionRatioMap.put(t, getRatio(transitionSize));	
-				}
+				s2 = State.newInstance(nextTarget);
+			} else {
+				s = State.newInstance(target);
+				s2 = State.newInstance(null);
 			}
 
-			return transitionRatioMap;
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} 
-		return null;
+			Transition t = new TransitionBuilder(s, s2)
+			.target(target).event(event).point(new Point(x, y)).createTransition();
 
-	}
+			sb.append(t.toString());
 
-	private double getRatio(int transitionSize) {
-		return ((double)1 / transitionSize  * 100);
-	}
 
-	private double getCurrRatio(double preRatio, int transitionSize) {
-		int incrementedCount = (int) (preRatio * transitionSize / 100 ) + 1;
-		return  (double)incrementedCount / (double)transitionSize * 100;
-	}
-
-	public List<Transition> getUserTransition(int userId) {
-
-		List<Transition> allTransitions = getAllTransition();
-		ArrayList<Transition> userTransitions = new ArrayList<Transition>();
-		
-		for(Transition t : allTransitions) {
-			int id = t.getOwnUserId();
-			
-			if(id == userId) {
-				userTransitions.add(t);
-			}
 		}
-		
-		return userTransitions;
+
+		return sb.toString();
 	}
+
+	
 }

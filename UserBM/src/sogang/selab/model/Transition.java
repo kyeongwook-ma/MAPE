@@ -167,10 +167,10 @@ public class Transition {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append( "\n" + src.toString() + " -> " + dst.toString() + "\n");
-		sb.append("x : " + this.getTouchPoint().getX() + " ,");
-		sb.append("y : " + this.getTouchPoint().getY() + " ,");
-		sb.append("event : " + event + " ,");
+		sb.append(src.toString() + " -> " + dst.toString() + ";");
+		sb.append("x = " + this.getTouchPoint().getX() + ";");
+		sb.append("y = " + this.getTouchPoint().getY() + ";");
+		sb.append("event = " + event + ";");
 
 		Iterator<String> transitionTarget = getTargets();
 		StringBuilder targetSB = new StringBuilder();
@@ -179,8 +179,8 @@ public class Transition {
 			targetSB.append(" " + target);
 		}
 
-		sb.append("target : " + targetSB.toString() + " ,");
-		sb.append("timestamp : " + String.valueOf(timestamp));
+		sb.append("target = " + targetSB.toString() + ";");
+		sb.append("timestamp = " + String.valueOf(timestamp) + ";");
 
 		return sb.toString();
 	}

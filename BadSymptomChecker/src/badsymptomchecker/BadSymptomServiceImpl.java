@@ -19,7 +19,7 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 
 
 	@Override
-	public List reason(Object currentBM, Object designModel) {
+	public List reason(List currentBM, String designModel) {
 		initRuleSet();
 
 		//LogData check 
@@ -30,7 +30,7 @@ public class BadSymptomServiceImpl implements BadSymptomService {
 
 
 	@Override
-	public void compareBM(Object currentBM, Object designModel) {
+	public void compareBM(List currentBM, String designModel) {
 		ArrayList ruleList = new ArrayList();
 		ruleList.add(new WrongPOSGUIRule());
 
