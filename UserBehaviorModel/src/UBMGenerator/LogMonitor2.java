@@ -31,7 +31,7 @@ public class LogMonitor2{
 		ArrayList<String> logLines = new ArrayList<String>();
 
 		try {
-			br = new BufferedReader(new FileReader(new File( "./mylog.txt")));
+			br = new BufferedReader(new FileReader(new File( "/data/mylog.txt")));
 
 			String strLine = null;   
 
